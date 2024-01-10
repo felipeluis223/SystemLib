@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function Register(){
 	const [ showPassword, setShowPassword ] = useState(false);
@@ -9,11 +10,24 @@ export default function Register(){
 	const [ password, setPassword ] = useState('');
 	const [ confirmPassword, setConfirmPassword ] = useState('');
 
+	const navigate = useNavigate();
+
 	// Itens que faltam:
 	// * Verificar e tratar os inputs - REGEX;
 	// * Armazenar em cache - LocalStorage;
 	// * Limpar os inputs e disparar um alerta de suceso ou insucesso.
 
+	// Limpando os valores em cache dos inputs e retornando à rota de login:
+	function backLogin(){
+		setName('');
+		setEmail('');
+		setPhone('');
+		setUsername('');
+		setPassword('');
+		setConfirmPassword('');
+
+		navigate("/");
+	}
 	function submit(){
 		const object = {
 			name: name,
@@ -60,7 +74,8 @@ export default function Register(){
 			<br /><br />
 
 			<button onClick={(e)=>setShowPassword(!showPassword)}>Show Password</button>
-			<button onClick={(e)=>submit()}>Login</button>
+			<button onClick={(e)=>submit()}>Register</button>
+			<button onClick={(e)=>backLogin()}>Login</button>
 		</section>
 	);
 }
