@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import JWT from '../../settings/jwt';
 import { useNavigate } from "react-router-dom";
 
 export default function Register(){
@@ -11,6 +12,12 @@ export default function Register(){
 	const [ confirmPassword, setConfirmPassword ] = useState('');
 
 	const navigate = useNavigate();
+
+
+	// Testando JWT:
+	const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVpcyBmZWxpcGUgJyIsImVtYWlsIjoiZmVsaXBlbHVpczIyM0BnbWFpbC5jb20iLCJwaG9uZSI6IjE5OTk5OTkiLCJ1c2VybmFtZSI6Imx1aXNmZWxpcDIyMyIsInBhc3N3b3JkIjoiMTIzNDU2IiwiY29uZmlybVBhc3N3b3JkIjoiMTIzNDU2In0.R33iXOnq7czF0yN6wM2uUjVHMaWMOn14khvzb57SY_U";
+	const jwt = new JWT()
+	jwt.decode(token);
 
 	// Itens que faltam:
 	// * Verificar e tratar os inputs - REGEX;
@@ -37,6 +44,7 @@ export default function Register(){
 			password: password,
 			confirmPassword: confirmPassword
 		};
+
 		console.table(object);
 	}
 	
@@ -59,7 +67,7 @@ export default function Register(){
 
 			<label>Username:</label>
 			<input
-				type='text' placeholder="Your email" onChange={(e)=>setUsername(e.target.value)} />
+				type='text' placeholder="Your username" onChange={(e)=>setUsername(e.target.value)} />
 
 			<br /><br />
 
