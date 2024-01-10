@@ -1,10 +1,18 @@
 import { useState } from 'react';
 
+import { VerifyLogin } from './verify'
+
 export default function Login(){
 	const [ showPassword, setShowPassword ] = useState(false);
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');
 
+	
+	function submit(){
+		console.log(`Usename: ${username}\nPassword: ${password}`);
+		
+	}
+	
 	return (
 		<section>
 			<label>Username:</label>
@@ -23,7 +31,7 @@ export default function Login(){
 
 			<button onClick={(e)=>setShowPassword(!showPassword)}>Show Password</button>
 
-			<button onClick={(e)=>console.log(`Usename: ${username}\nPassword: ${password}`)}>Login</button>
+			<button onClick={(e)=>submit()}>Login</button>
 		</section>
 	);
 }
