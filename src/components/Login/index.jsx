@@ -7,10 +7,13 @@ export default function Login(){
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');
 
-	
+	// Itens que faltam:
+	// * Verificar e tratar os inputs - REGEX;
+	// * Verificar se há dados em cache e são válidos - LocalStorage;
+	// * Limpar os inputs e direcionar para o menu.
+
 	function submit(){
 		console.log(`Usename: ${username}\nPassword: ${password}`);
-		
 	}
 	
 	return (

@@ -2,7 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Login from './components/Login/index'
+import Register from './components/Register/index'
+import {TemplateLogin} from './templates/login'
 import './index.css'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,8 +13,19 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Login />,
+    path: '',
+    element: <TemplateLogin />,
+    children: [
+      { 
+        path: '/',
+        element: <Login />,
+      },
+
+      {
+        path: 'register',
+        element: <Register />
+      }
+    ]
   },
   {
     path: '/home',
