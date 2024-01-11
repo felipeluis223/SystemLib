@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import JWT from '../../settings/jwt';
+import { Cryptography } from '../../settings/cryptography'
 import { useNavigate } from "react-router-dom";
 
 export default function Register(){
@@ -11,13 +11,21 @@ export default function Register(){
 	const [ password, setPassword ] = useState('');
 	const [ confirmPassword, setConfirmPassword ] = useState('');
 
+	// Váriavel responsável pela navegação entre as rotas/páginas:
 	const navigate = useNavigate();
 
-
-	// Testando JWT:
-	const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVpcyBmZWxpcGUgJyIsImVtYWlsIjoiZmVsaXBlbHVpczIyM0BnbWFpbC5jb20iLCJwaG9uZSI6IjE5OTk5OTkiLCJ1c2VybmFtZSI6Imx1aXNmZWxpcDIyMyIsInBhc3N3b3JkIjoiMTIzNDU2IiwiY29uZmlybVBhc3N3b3JkIjoiMTIzNDU2In0.R33iXOnq7czF0yN6wM2uUjVHMaWMOn14khvzb57SY_U";
-	const jwt = new JWT()
-	jwt.decode(token);
+	// Criptografar e desencriptografar os dados em objeto:
+	const key = 'felipeluis223';
+	const iv = 'luisfelipe223';
+	const object = {
+	    name: "Luis Felipe",
+	    email: "felipe@gmail.com",
+	    phone: "1992099631",
+	    username: "felipeluis223",
+	    password: "123456",
+	    confirmPassword: "123456"
+	};
+	const encrypted = new Cryptography(object, key, iv);
 
 	// Itens que faltam:
 	// * Verificar e tratar os inputs - REGEX;
@@ -46,6 +54,12 @@ export default function Register(){
 		};
 
 		console.table(object);
+
+		const result = encrypted.encode()
+		console.log(result)
+		
+		const resultDecode = encrypted.decode(result)
+		console.table(resultDecode)
 	}
 	
 	return (
