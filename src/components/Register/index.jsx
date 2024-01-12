@@ -15,22 +15,10 @@ export default function Register(){
 	const navigate = useNavigate();
 
 	// Criptografar e desencriptografar os dados em objeto:
-	const key = 'felipeluis223';
-	const iv = 'luisfelipe223';
-	const object = {
-	    name: "Luis Felipe",
-	    email: "felipe@gmail.com",
-	    phone: "1992099631",
-	    username: "felipeluis223",
-	    password: "123456",
-	    confirmPassword: "123456"
-	};
-	const encrypted = new Cryptography(object, key, iv);
+	const key = '0123456789abcdef0123456789abcdef';
+	const iv = 'abcdefghijklmnop';
 
-	// Itens que faltam:
-	// * Verificar e tratar os inputs - REGEX;
-	// * Armazenar em cache - LocalStorage;
-	// * Limpar os inputs e disparar um alerta de suceso ou insucesso.
+	const encrypted = new Cryptography(key, iv);
 
 	// Limpando os valores em cache dos inputs e retornando à rota de login:
 	function backLogin(){
@@ -53,12 +41,8 @@ export default function Register(){
 			confirmPassword: confirmPassword
 		};
 
-		console.table(object);
-
-		const result = encrypted.encode()
-		console.log(result)
-		
-		const resultDecode = encrypted.decode(result)
+		const token = encrypted.encode(object)
+		const resultDecode = encrypted.decode(token, key, iv)
 		console.table(resultDecode)
 	}
 	
