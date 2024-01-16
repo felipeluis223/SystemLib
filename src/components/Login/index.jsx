@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { VerifyLogin } from './verify'
 import { useNavigate } from "react-router-dom";
 import { Cryptography } from '../../settings/cryptography'
-import { IoPersonCircleSharp } from "react-icons/io5";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { MdOutlineLockPerson } from "react-icons/md";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 
 export default function Login(){
@@ -50,31 +52,47 @@ export default function Login(){
 			<span>Welcome in login</span>
 			<section className='content-login'>
 				<div className='container-input'>
-					<IoPersonCircleSharp />
-					<label>Username:</label>	
-					<input
-						type='text'
-						name='username_email'
-						placeholder="Your email"
-						onChange={onChange}
-					/>
+					<div>
+						<IoPersonCircleOutline className='icons-login' />
+					</div>	
+					<section>
+						<input
+							type='text'
+							name='username_email'
+							placeholder="Your email"
+							onChange={onChange}
+						/>
+					</section>
 				</div>
 				
 				<div className='container-input'>
-					<label>Password:</label>
-					<input 
-						type={showPassword == false ? 'password':'text'} 
-						name='password'
-						onChange={onChange}
-						placeholder='Your password'
-					/>
+					<div>
+						<MdOutlineLockPerson className='icons-login' />
+					</div>
+					<section>
+						<input 
+							type={showPassword == false ? 'password':'text'} 
+							name='password'
+							onChange={onChange}
+							placeholder='Your password'
+							
+						/>
+						<button onClick={(e)=>setShowPassword(!showPassword)}>
+							{
+								showPassword != true ? <FiEye className='icons-login-password' />:<FiEyeOff className='icons-login-password' />
+							}
+							
+						</button>
+					</section>
+					
 				</div>
 
-				<button onClick={(e)=>setShowPassword(!showPassword)}>Show Password</button>
-
-				<button onClick={(e)=>submit()}>Login</button>
-				
-				<button onClick={(e)=>navigate("register")}>Register</button>
+				{
+					/*<button onClick={(e)=>submit()}>Login</button>
+					
+					<button onClick={(e)=>navigate("register")}>Register</button>
+					*/
+				}
 			</section>
 		</section>
 	);
