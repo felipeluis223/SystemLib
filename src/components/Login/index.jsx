@@ -6,7 +6,6 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { MdOutlineLockPerson } from "react-icons/md";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-
 export default function Login(){
 	const [ showPassword, setShowPassword ] = useState(false);
 	const [ values, setValues ] = useState({
@@ -84,15 +83,11 @@ export default function Login(){
 							
 						</button>
 					</section>
-					
+				</div>			
+				<div className='container-buttons-login'>
+					<button onClick={(e)=>submit()} className="button-login">Login</button>
+					<button onClick={(e)=>navigate("register")} className='button-create-account'>Don't have an account?</button>
 				</div>
-
-				{
-					/*<button onClick={(e)=>submit()}>Login</button>
-					
-					<button onClick={(e)=>navigate("register")}>Register</button>
-					*/
-				}
 			</section>
 		</section>
 	);
