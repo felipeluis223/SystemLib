@@ -16,7 +16,6 @@ export default function Login(){
 
 	const navigate = useNavigate();
 
-
 	// Criptografar e desencriptografar os dados em objeto:
 	const key = '0123456789abcdef0123456789abcdef';
 	const iv = 'abcdefghijklmnop';
@@ -46,9 +45,11 @@ export default function Login(){
 	return (
 		<section className='container-content-login'>
 			<div className='container-title'>
-				<h3>LibSystem</h3>
+				<h3>DevLib</h3>
 			</div>
-			<span>Welcome in login</span>
+			<h3>Welcome to <br/>the library system. </h3>
+			<br />
+			<span>Log in to access:</span>
 			<section className='content-login'>
 				<div className='container-input'>
 					<div>
@@ -86,8 +87,8 @@ export default function Login(){
 				</div>			
 				<div className='container-buttons-login'>
 					<button onClick={(e)=>submit()} className="button-login">Login</button>
-					<button onClick={(e)=>navigate("register")} className='button-create-account'>Don't have an account?</button>
 				</div>
+				<button onClick={(e)=>navigate("register")} className='button-create-account'>Don't have an account?</button>
 			</section>
 		</section>
 	);
